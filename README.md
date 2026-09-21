@@ -49,6 +49,10 @@
 </tr>
 </table>
 
+## Demo
+
+Velora UI is a free, MIT-licensed set of 32 animated shadcn/ui components and a complete multi-page SaaS landing template built with Next.js, Tailwind CSS and Motion. Open the live site at [velora.colorlib.com](https://velora.colorlib.com) to try every component, theme and page in the browser.
+
 ## Why Velora
 
 - **The free tier is the whole product.** Complete assembled pages, not just isolated components. The kind of template that costs $149–$299 elsewhere is the baseline here.
