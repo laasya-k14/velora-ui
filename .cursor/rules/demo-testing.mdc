@@ -1,0 +1,6 @@
+---
+description: Project testing conventions
+alwaysApply: true
+---
+
+Reuse the existing test at `src/components/template/contact-form.test.tsx` as an example. After behavior changes, run the relevant existing test command and report the command and result.
