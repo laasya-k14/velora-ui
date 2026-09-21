@@ -1,0 +1,8 @@
+---
+description: Project testing conventions
+alwaysApply: true
+---
+
+Reuse the existing Vitest and Testing Library setup. Follow `src/components/template/contact-form.test.tsx` as the example for new or updated tests.
+
+After behavior changes, run the relevant existing test command (`pnpm test`, or that same script scoped to the affected files) and report the command and its result.
