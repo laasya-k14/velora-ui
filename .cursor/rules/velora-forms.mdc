@@ -1,0 +1,10 @@
+---
+description: Velora form and UI conventions
+globs: "**/*.{tsx,jsx}"
+alwaysApply: false
+---
+# Velora forms
+
+- Reuse shared form components from the existing design system; do not invent one-off form fields.
+- Keep existing colour tokens (CSS variables / theme tokens). Do not introduce new raw hex colours.
+- Link helper text to inputs for screen readers (aria-describedby / FormDescription).
