@@ -66,8 +66,24 @@ const faqs = [
     a: "Yes. Everything on this site — every animation, page and section — is the free tier. If your product needs one great landing site, you never have to pay us anything.",
   },
   {
+    q: "Do I need Pro to use the components?",
+    a: "No. All 32+ animated components and the complete multi-page template are MIT licensed and free. Pro only adds extra niches, section variants, a Figma source file, and waitlist, newsletter, and Stripe wiring.",
+  },
+  {
+    q: "Can I use Velora in commercial projects?",
+    a: "Yes. The free tier is MIT licensed, so you can use it in client work, products you sell, and internal tools. No attribution required.",
+  },
+  {
     q: "Is Pro a subscription?",
     a: "No. Pro is a one-time payment with lifetime access and lifetime updates. No renewals, no seat counting for small teams.",
+  },
+  {
+    q: "What's included in the Pro team license?",
+    a: "Pro includes a team license, so everyone at your company can use the files. There are no per-seat fees for small teams.",
+  },
+  {
+    q: "Can I start on Free and upgrade later?",
+    a: "Yes. Free stays free forever — nothing you ship on it is taken away. When Pro launches, waitlist members get launch pricing and early access.",
   },
   {
     q: "How does this compare to Magic UI Pro or Aceternity Pro?",
@@ -92,8 +108,27 @@ function Cell({ value }: { value: boolean | string }) {
 }
 
 export default function PricingPage() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
+      },
+    })),
+  };
+
   return (
     <main className="relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <SiteHeader />
 
       <PageHeader
@@ -221,13 +256,27 @@ export default function PricingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="pb-28">
+      <section
+        id="faq"
+        aria-labelledby="pricing-faq-heading"
+        className="scroll-mt-24 pb-28"
+      >
         <div className="mx-auto max-w-3xl px-4 lg:px-8">
           <BlurFade>
-            <h2 className="text-center text-3xl font-semibold tracking-tight">
-              Pricing questions
+            <p className="text-center text-sm font-medium text-primary">FAQ</p>
+            <h2
+              id="pricing-faq-heading"
+              className="mt-3 text-center text-3xl font-semibold tracking-tight text-balance lg:text-4xl"
+            >
+              Frequently asked questions
             </h2>
-            <Accordion type="single" collapsible className="mt-10">
+            <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground text-pretty">
+              Free is the whole product. Here&apos;s how the plans work, what
+              Pro adds, and when you might want it.
+            </p>
+          </BlurFade>
+          <BlurFade delay={0.15}>
+            <Accordion type="single" collapsible className="mt-12">
               {faqs.map((faq) => (
                 <AccordionItem key={faq.q} value={faq.q}>
                   <AccordionTrigger className="text-left text-base">
@@ -239,6 +288,16 @@ export default function PricingPage() {
                 </AccordionItem>
               ))}
             </Accordion>
+            <p className="mt-10 text-center text-sm text-muted-foreground">
+              Still have a question?{" "}
+              <Link
+                href="/contact"
+                className="font-medium text-foreground underline-offset-4 hover:underline"
+              >
+                Talk to us
+              </Link>{" "}
+              about licensing or the Pro waitlist.
+            </p>
           </BlurFade>
         </div>
       </section>
