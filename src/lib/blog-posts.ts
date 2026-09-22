@@ -41,3 +41,27 @@ export const blogPosts: BlogPost[] = [
     readingTime: "3 min read",
   },
 ];
+
+/** Unique categories in listing order — used by the /blog filter. */
+export const blogCategories = [
+  ...new Set(blogPosts.map((post) => post.category)),
+];
+
+export function categoryQueryValue(category: string) {
+  return category.toLowerCase();
+}
+
+export function blogCategoryHref(category?: string) {
+  return category
+    ? `/blog?category=${encodeURIComponent(categoryQueryValue(category))}`
+    : "/blog";
+}
+
+/** Resolve a `?category=` query value to a known category, or undefined for "all". */
+export function findBlogCategory(param: string | null | undefined) {
+  if (!param) return undefined;
+  const normalized = param.toLowerCase();
+  return blogCategories.find(
+    (category) => categoryQueryValue(category) === normalized
+  );
+}
