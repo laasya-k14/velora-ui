@@ -179,6 +179,11 @@ export default function PricingPage() {
             </div>
           </BlurFade>
         </div>
+        <BlurFade>
+          <p className="mx-auto mt-8 max-w-4xl px-4 text-center text-sm text-muted-foreground lg:px-8">
+            30-day money-back guarantee on Pro. Full refund, no questions asked.
+          </p>
+        </BlurFade>
       </section>
 
       {/* Comparison table */}

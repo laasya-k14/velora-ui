@@ -568,6 +568,11 @@ export default function Home() {
               </div>
             </BlurFade>
           </div>
+          <BlurFade>
+            <p className="mx-auto mt-8 max-w-4xl text-center text-sm text-muted-foreground">
+              30-day money-back guarantee on Pro. Full refund, no questions asked.
+            </p>
+          </BlurFade>
         </div>
       </section>
 
