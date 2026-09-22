@@ -25,7 +25,7 @@ export default function BlogPage() {
         eyebrow="Blog"
         title={
           <>
-            Notes from the <span className="text-primary">workshop</span>
+            Notes from the <span className="text-primary">build</span>
           </>
         }
         description="Engineering notes, design decisions and announcements — written while building Velora in public. The blog itself is part of the free template, MDX pipeline included."
