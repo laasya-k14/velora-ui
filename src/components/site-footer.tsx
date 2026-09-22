@@ -37,8 +37,8 @@ const groups = [
 export function SiteFooter() {
   return (
     <footer className="border-t border-border/40 py-14">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-[1.4fr_1fr_1fr_1fr] lg:px-8">
-        <div>
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-10 px-4 md:grid-cols-[1.4fr_1fr_1fr_1fr] lg:px-8">
+        <div className="col-span-2 md:col-span-1">
           <Link href="/" className="flex items-center gap-2 font-semibold">
             <SparklesIcon className="size-5 text-primary" />
             Velora UI
