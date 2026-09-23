@@ -3,7 +3,28 @@ import { SparklesIcon } from "lucide-react";
 
 import { siteConfig } from "@/lib/site-config";
 
-const groups = [
+type FooterLink = {
+  text: string;
+  href: string;
+};
+
+function FooterAnchor({ link }: { link: FooterLink }) {
+  const className = "transition-colors hover:text-foreground";
+  if (link.href.startsWith("http")) {
+    return (
+      <a href={link.href} rel="noopener" className={className}>
+        {link.text}
+      </a>
+    );
+  }
+  return (
+    <Link href={link.href} className={className}>
+      {link.text}
+    </Link>
+  );
+}
+
+const groups: { title: string; links: FooterLink[] }[] = [
   {
     title: "Product",
     links: [
@@ -34,7 +55,18 @@ const groups = [
   },
 ];
 
-export function SiteFooter() {
+export function SiteFooter({
+  links = [],
+}: {
+  /** Page-specific links appended to the Product column. */
+  links?: FooterLink[];
+}) {
+  const columns = groups.map((group) =>
+    group.title === "Product"
+      ? { ...group, links: [...group.links, ...links] }
+      : group,
+  );
+
   return (
     <footer className="border-t border-border/40 py-14">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-[1.4fr_1fr_1fr_1fr] lg:px-8">
@@ -52,28 +84,13 @@ export function SiteFooter() {
             Built with Next.js 16, Tailwind CSS 4 &amp; Motion
           </p>
         </div>
-        {groups.map((group) => (
+        {columns.map((group) => (
           <nav key={group.title} aria-label={group.title}>
             <h3 className="text-sm font-semibold">{group.title}</h3>
             <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
               {group.links.map((link) => (
                 <li key={link.text}>
-                  {link.href.startsWith("http") ? (
-                    <a
-                      href={link.href}
-                      rel="noopener"
-                      className="transition-colors hover:text-foreground"
-                    >
-                      {link.text}
-                    </a>
-                  ) : (
-                    <Link
-                      href={link.href}
-                      className="transition-colors hover:text-foreground"
-                    >
-                      {link.text}
-                    </Link>
-                  )}
+                  <FooterAnchor link={link} />
                 </li>
               ))}
             </ul>
