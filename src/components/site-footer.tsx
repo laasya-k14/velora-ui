@@ -10,6 +10,7 @@ const groups = [
       { text: "Components", href: "/components" },
       { text: "Themes", href: "/themes" },
       { text: "Pricing", href: "/pricing" },
+      { text: "Contact sales", href: "/contact" },
       { text: "Changelog", href: "/changelog" },
     ],
   },
